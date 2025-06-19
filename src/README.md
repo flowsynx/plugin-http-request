@@ -1,4 +1,4 @@
-# FlowSynx HttpRequest Plugin – FlowSynx Platform Integration
+## FlowSynx HttpRequest Plugin – FlowSynx Platform Integration
 
 The **HttpRequest Plugin** is a pre-packaged, plug-and-play integration component for the FlowSynx engine. It enables to performs RESTful HTTP operations (`GET`, `POST`, `PUT`, `DELETE`) and it's part of FlowSynx’s no-code/low-code automation workflows.
 
