@@ -22,7 +22,7 @@ public class HttpRequestPlugin : IPlugin
                 Name = "HttpRequest",
                 CompanyName = "FlowSynx",
                 Description = Resources.PluginDescription,
-                Version = new PluginVersion(1, 0, 0),
+                Version = new PluginVersion(1, 1, 0),
                 Category = PluginCategory.Web,
                 Authors = new List<string> { "FlowSynx" },
                 Copyright = "© FlowSynx. All rights reserved.",
@@ -100,11 +100,16 @@ public class HttpRequestPlugin : IPlugin
 
         _logger?.LogInfo($"Response: {(int)response.StatusCode} {response.ReasonPhrase}");
 
-        return new
+        var result = new PluginContext(Guid.NewGuid().ToString(), "Data")
         {
-            StatusCode = (int)response.StatusCode,
-            ReasonPhrase = response.ReasonPhrase,
-            Body = responseBody
+            Format = "Json",
+            Content = responseBody
         };
+
+        result.Metadata["StatusCode"] = (int)response.StatusCode;
+        if (response.ReasonPhrase is not null)
+            result.Metadata["ReasonPhrase"] = response.ReasonPhrase;
+
+        return result;
     }
 }
