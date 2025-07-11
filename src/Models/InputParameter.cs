@@ -1,6 +1,6 @@
 ﻿namespace FlowSynx.Plugins.HttpRequest.Models;
 
-internal class OperationParameter
+internal class InputParameter
 {
     public string Operation { get; set; } = string.Empty;
     public string Url { get; set; } = string.Empty;

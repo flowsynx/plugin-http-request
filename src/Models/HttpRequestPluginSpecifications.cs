@@ -2,7 +2,7 @@
 
 namespace FlowSynx.Plugins.HttpRequest.Models;
 
-internal class HttpRequestPluginSpecifications: PluginSpecifications
+public class HttpRequestPluginSpecifications: PluginSpecifications
 {
 
 }

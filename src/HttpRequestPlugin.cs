@@ -12,28 +12,23 @@ public class HttpRequestPlugin : IPlugin
     private static readonly HttpClient _httpClient = new HttpClient();
     private bool _isInitialized;
 
-    public PluginMetadata Metadata
+    public PluginMetadata Metadata => new PluginMetadata
     {
-        get
-        {
-            return new PluginMetadata
-            {
-                Id = Guid.Parse("fa9e852c-d81d-4f29-9a79-28c091c7bd22"),
-                Name = "HttpRequest",
-                CompanyName = "FlowSynx",
-                Description = Resources.PluginDescription,
-                Version = new PluginVersion(1, 1, 0),
-                Category = PluginCategory.Web,
-                Authors = new List<string> { "FlowSynx" },
-                Copyright = "© FlowSynx. All rights reserved.",
-                Icon = "flowsynx.png",
-                ReadMe = "README.md",
-                RepositoryUrl = "https://github.com/flowsynx/plugin-http-request",
-                ProjectUrl = "https://flowsynx.io",
-                Tags = new List<string>() { "flowSynx", "http", "http-request", "rest", "restful" }
-            };
-        }
-    }
+        Id = Guid.Parse("fa9e852c-d81d-4f29-9a79-28c091c7bd22"),
+        Name = "HttpRequest",
+        CompanyName = "FlowSynx",
+        Description = Resources.PluginDescription,
+        Version = new Version(1, 1, 0),
+        Category = PluginCategory.Web,
+        Authors = new List<string> { "FlowSynx" },
+        Copyright = "© FlowSynx. All rights reserved.",
+        Icon = "flowsynx.png",
+        ReadMe = "README.md",
+        RepositoryUrl = "https://github.com/flowsynx/plugin-http-request",
+        ProjectUrl = "https://flowsynx.io",
+        Tags = new List<string>() { "flowSynx", "http", "http-request", "rest", "restful" },
+        MinimumFlowSynxVersion = new Version(1, 1, 1),
+    };
 
     public PluginSpecifications? Specifications { get; set; }
 
@@ -60,7 +55,7 @@ public class HttpRequestPlugin : IPlugin
         if (!_isInitialized)
             throw new InvalidOperationException($"Plugin '{Metadata.Name}' v{Metadata.Version} is not initialized.");
 
-        var operationParameter = parameters.ToObject<OperationParameter>();
+        var operationParameter = parameters.ToObject<InputParameter>();
         var operation = operationParameter.Operation.ToLowerInvariant();
         var url = operationParameter.Url;
         var headers = operationParameter.Headers ?? new Dictionary<string, string>();
