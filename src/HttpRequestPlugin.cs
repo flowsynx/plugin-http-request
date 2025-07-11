@@ -18,7 +18,7 @@ public class HttpRequestPlugin : IPlugin
         Name = "HttpRequest",
         CompanyName = "FlowSynx",
         Description = Resources.PluginDescription,
-        Version = new Version(1, 1, 0),
+        Version = new Version(1, 1, 1),
         Category = PluginCategory.Web,
         Authors = new List<string> { "FlowSynx" },
         Copyright = "© FlowSynx. All rights reserved.",
